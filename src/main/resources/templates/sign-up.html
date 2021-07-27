@@ -17,16 +17,64 @@
     <form class="form-horizontal" action="#" th:action="@{/interfaces/sign-up}" th:object="${signUpForm}" method="post">
 
       <div>
-        <label class="col-sm-2 control-label" >Enter a new Email</label>
+        <label class="col-sm-2 control-label" >Ingrese su nuevo Email</label>
         <label>
           <input class="form-control" type="text" id="email" name="email" th:field="*{email}">
         </label>
       </div>
 
       <div>
-        <label class="col-sm-2 control-label" >Password</label>
+        <label class="col-sm-2 control-label" >Contraseña</label>
         <label>
           <input class="form-control" type="password"  th:field="*{password}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Nombre</label>
+        <label>
+          <input class="form-control" type="name"  th:field="*{name}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Apellido</label>
+        <label>
+          <input class="form-control" type="lastName"  th:field="*{lastName}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Direccion</label>
+        <label>
+          <input class="form-control" type="address"  th:field="*{address}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Telefono</label>
+        <label>
+          <input class="form-control" type="phoneNumber"  th:field="*{phoneNumber}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Ciudad</label>
+        <label>
+          <input class="form-control" type="city"  th:field="*{city}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Provincia</label>
+        <label>
+          <input class="form-control" type="state"  th:field="*{state}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Pais</label>
+        <label>
+          <input class="form-control" type="country"  th:field="*{country}">
+        </label>
+      </div>
+      <div>
+        <label class="col-sm-2 control-label" >Email de respaldo</label>
+        <label>
+          <input class="form-control" type="backUpEmail"  th:field="*{backUpEmail}">
         </label>
       </div>
 

@@ -21,14 +21,11 @@ import java.util.Collections;
 @Service
 public class LoginService {
 
-    @Value("${users.microservice}")
-    private String usersApiUrl;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private UserService userService;
 
     public String verifyLoginForm(LoginForm loginForm, HttpSession httpSession, Model model) throws JsonProcessingException, InterruptedException {
 
@@ -66,20 +63,22 @@ public class LoginService {
 
     public String verifySignUpForm(SignUpForm signUpForm, HttpSession httpSession, Model model) throws JsonProcessingException, InterruptedException {
 
-        RequestVerification check = null;
+        Boolean check = false;
         if( signUpForm.getEmail() != null
                 && !signUpForm.getEmail().isEmpty()
                 &&  signUpForm.getPassword() != null
                 && !signUpForm.getPassword().isEmpty()
                 && signUpForm.getEmail().contains("@"))
         {
-            check  = restTemplate.postForObject(usersApiUrl + "/sign-up",signUpForm, RequestVerification.class);
+            userService.registerNewUser(signUpForm);
+            check = true;
         } else
         {
             return "invalid-data";
         }
 
-        if(check.getExist()){
+
+        if(check){
             httpSession.setAttribute("user",signUpForm.getEmail());
 
             EmailListResponse emailListResponse = emailService.getAllEmails(signUpForm.getEmail());
